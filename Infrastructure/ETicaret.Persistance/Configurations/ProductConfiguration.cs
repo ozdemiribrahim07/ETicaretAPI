@@ -35,7 +35,7 @@ namespace ETicaret.Persistance.Configurations
 
             Product product3 = new()
             {
-                Id = 2,
+                Id = 3,
                 ProductName = faker.Commerce.ProductName(),
                 ProductDesc = faker.Commerce.ProductDescription(),
                 BrandId = 1,
