@@ -9,7 +9,6 @@ namespace ETicaret.Domain.Entities
 {
     public class Product : BaseEntity
     {
-
         public required string ProductName { get; set; }
         public required string ProductDesc { get; set; }
         public required int BrandId { get; set; }
