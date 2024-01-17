@@ -23,8 +23,8 @@ namespace ETicaret.Domain.Entities
             CategoryId = categoryId;
         }
 
-        public required string DetailTitle { get; set; }
-        public required string DetailDesc { get; set; }
+        public string DetailTitle { get; set; }
+        public string DetailDesc { get; set; }
         public int CategoryId { get; set; }
         public Category Category { get; set; }
 
