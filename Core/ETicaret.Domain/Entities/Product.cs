@@ -9,11 +9,11 @@ namespace ETicaret.Domain.Entities
 {
     public class Product : BaseEntity
     {
-        public required string ProductName { get; set; }
-        public required string ProductDesc { get; set; }
-        public required int BrandId { get; set; }
-        public required decimal ProductPrice { get; set; }
-        public required decimal ProductDiscount { get; set; }
+        public string ProductName { get; set; }
+        public string ProductDesc { get; set; }
+        public int BrandId { get; set; }
+        public decimal ProductPrice { get; set; }
+        public decimal ProductDiscount { get; set; }
         public Brand Brand { get; set; }
         public ICollection<Category> Categories { get; set; }
     }
