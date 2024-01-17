@@ -1,4 +1,6 @@
-﻿namespace ETicaret.Application.Features.Products.Queries.GetAllProducts
+﻿using ETicaret.Application.DTOs;
+
+namespace ETicaret.Application.Features.Products.Queries.GetAllProducts
 {
     public class GetAllProductsQueryResponse
     {
@@ -6,6 +8,7 @@
         public string ProductDesc { get; set; }
         public decimal ProductPrice { get; set; }
         public decimal ProductDiscount { get; set; }
+        public BrandDto Brand { get; set; }
     }
 
 }
