@@ -1,6 +1,9 @@
-﻿using ETicaret.Application.Interfaces.UnitOfWork;
+﻿using ETicaret.Application.DTOs;
+using ETicaret.Application.Interfaces.AutoMapper;
+using ETicaret.Application.Interfaces.UnitOfWork;
 using ETicaret.Domain.Entities;
 using MediatR;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,31 +15,31 @@ namespace ETicaret.Application.Features.Products.Queries.GetAllProducts
     public class GetAllProductsQueryHandler : IRequestHandler<GetAllProductsQueryRequest, IList<GetAllProductsQueryResponse>>
     {
         private readonly IUnitOfWork unitOfWork;
+        private readonly IMapper mapper;
 
-        public GetAllProductsQueryHandler(IUnitOfWork unitOfWork)
+        public GetAllProductsQueryHandler(IUnitOfWork unitOfWork, IMapper mapper)
         {
             this.unitOfWork = unitOfWork;
+            this.mapper = mapper;
         }
 
         public async Task<IList<GetAllProductsQueryResponse>> Handle(GetAllProductsQueryRequest request, CancellationToken cancellationToken)
         {
 
-            var products = await unitOfWork.GetReadRepository<Product>().GetAllAsync();
+            var products = await unitOfWork.GetReadRepository<Product>().GetAllAsync(include:x => x.Include(b => b.Brand));
 
-            List<GetAllProductsQueryResponse> response = new();
+            mapper.Map<BrandDto, Brand>(new Brand());
 
-            foreach (var product in products)
+            var map = mapper.Map<GetAllProductsQueryResponse, Product>(products);
+
+            foreach (var item in map)
             {
-                response.Add(new GetAllProductsQueryResponse
-                {
-                    ProductName = product.ProductName,
-                    ProductDesc = product.ProductDesc,
-                    ProductDiscount = product.ProductDiscount,
-                    ProductPrice = product.ProductPrice - (product.ProductPrice * product.ProductDiscount / 100),
-                });
+                item.ProductPrice -= (item.ProductPrice * item.ProductDiscount / 100);
             }
 
-            return response;
+            return map;
+
+
         }
     }
 
