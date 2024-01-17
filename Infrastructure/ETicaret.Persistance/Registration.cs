@@ -1,4 +1,6 @@
-﻿using ETicaret.Persistance.Contexts;
+﻿using ETicaret.Application.Interfaces.Repositories;
+using ETicaret.Persistance.Contexts;
+using ETicaret.Persistance.Repositories;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -17,6 +19,9 @@ namespace ETicaret.Persistance
         {
             serviceCollection.AddDbContext<TicaretContext>(options => options.UseSqlServer(configuration.GetConnectionString("DefaultConnectionString")));
            
+            serviceCollection.AddScoped(typeof(IReadRepository<>), typeof(ReadRepository<>));
+            serviceCollection.AddScoped(typeof(IWriteRepository<>), typeof(WriteRepository<>));
+
         }
 
 

@@ -18,6 +18,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\..\Core\ETicaret.Application\ETicaret.Application.csproj" />
     <ProjectReference Include="..\..\Core\ETicaret.Domain\ETicaret.Domain.csproj" />
   </ItemGroup>
 
