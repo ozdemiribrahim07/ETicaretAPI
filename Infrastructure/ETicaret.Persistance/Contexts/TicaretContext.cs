@@ -27,6 +27,7 @@ namespace ETicaret.Persistance.Contexts
         public DbSet<Brand> Brands { get; set; }
         public DbSet<ProductDetail> ProductDetails { get; set; }
         public DbSet<Category> Categories { get; set; }
+        public DbSet<ProductCategory> ProductCategories { get; set; }
 
 
         protected override void OnModelCreating(ModelBuilder b)
