@@ -13,6 +13,7 @@ namespace ETicaret.Application.Interfaces.Repositories
         Task AddRangeAsync(IList<T> t);
 
         Task HardDeleteAsync(T t);
+        Task HardDeleteAsyncRange(IList<T> t);
 
         Task<T> UpdateAsync(T t);
 

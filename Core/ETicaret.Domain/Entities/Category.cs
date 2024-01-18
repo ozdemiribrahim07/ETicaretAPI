@@ -26,7 +26,7 @@ namespace ETicaret.Domain.Entities
         public string CategoryName { get; set; }
         public int Priority { get; set; }
         public ICollection<Product> Products { get; set; }
-        public ICollection<ProductDetail> ProductDetails { get; set; }
+        public ICollection<ProductCategory> ProductCategories { get; set; }
 
     }
 }

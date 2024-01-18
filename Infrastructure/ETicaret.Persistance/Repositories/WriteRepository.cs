@@ -36,6 +36,10 @@ namespace ETicaret.Persistance.Repositories
             await Task.Run(() => Table.Remove(t));
         }
 
+        public async Task HardDeleteAsyncRange(IList<T> t)
+        {
+            await Task.Run(() => Table.RemoveRange(t));
+        }
 
         public async Task<T> UpdateAsync(T t)
         {
