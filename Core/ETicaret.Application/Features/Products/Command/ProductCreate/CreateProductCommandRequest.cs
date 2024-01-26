@@ -16,6 +16,5 @@ namespace ETicaret.Application.Features.Products.Command.ProductCreate
         public decimal ProductDiscount { get; set; }
 
         public IList<int> CategoryIds { get; set; }
-
     }
 }

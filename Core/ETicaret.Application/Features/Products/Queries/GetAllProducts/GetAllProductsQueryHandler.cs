@@ -37,8 +37,9 @@ namespace ETicaret.Application.Features.Products.Queries.GetAllProducts
                 item.ProductPrice -= (item.ProductPrice * item.ProductDiscount / 100);
             }
 
-            return map;
+            //return map;
 
+            throw new Exception("Hata");
 
         }
     }
